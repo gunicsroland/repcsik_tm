@@ -1,0 +1,75 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Repcsik_tm" 
+        Width="1000"
+        KeyDown="Window_KeyDown"
+        KeyUp="Window_KeyUp">
+    <DockPanel>
+        <Menu x:Name="mainMenu" DockPanel.Dock="Top">
+            <MenuItem Header="_Options">
+                <MenuItem Header="_Motor" Click="Motor_Click_1" IsCheckable="True"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+
+            <StackPanel x:Name="panel" Orientation="Vertical" Margin="0 0 10 0">
+                <!-- Tömeg -->
+                <Label Content="Tömeg (kg):" VerticalAlignment="Center"/>
+                <TextBox x:Name="MassTextBox" Text="1000"/>
+
+                <!-- Sebesség -->
+                <Label Content="Sebesség (m/s):" VerticalAlignment="Center"/>
+                <TextBox x:Name="VelocityTextBox" Text="50"/>
+
+                <!-- Szárnyfelület -->
+                <Label Content="Szárnyfelület (m²):" VerticalAlignment="Center"/>
+                <TextBox x:Name="WingAreaTextBox" Text="50"/>
+
+                <!-- Légsűrűség -->
+                <Label Content="Légsűrűség (kg/m³):" VerticalAlignment="Center"/>
+                <TextBox x:Name="AirDensityTextBox" Text="1,2471"/>
+
+                <!-- Gravitáció -->
+                <Label Content="Gravitáció (m/s²):" VerticalAlignment="Center"/>
+                <TextBox x:Name="GravityTextBox" Text="9,81"/>
+
+                <!-- Control -->
+                <Button x:Name="StartButton"  Content="Start" Click="StartButton_Click" Margin="0 5 0 5"/>
+                <Button x:Name="StopButton" Content="Stop" Click="StopButton_Click" Margin="0 5 0 5"/>
+                <Button x:Name="ContinueButton" Content="Continue" Click="ContinueButton_Click" Margin="0 5 0 5"/>
+                <Slider x:Name="DeltaTime" Minimum="0.0016" Maximum="0.1" Value="0.016" ValueChanged="DeltaTime_ValueChanged"/>
+
+                <!-- Statistics -->
+                <Label x:Name="ThrustStat" Foreground="Red" Width=" 150"/>
+                <Label x:Name="GravStat" Foreground="HotPink" Width=" 150"/>
+                <Label x:Name="DragStat" Foreground="Blue" Width=" 150"/>
+                <Label x:Name="LiftStat" Foreground="Green" Width=" 150"/>
+                <Label x:Name="LiftCoeff" Width=" 150"/>
+                <Label x:Name="DragCoeff" Width=" 150"/>
+                <Label x:Name="Aoa" Width=" 150"/>
+                <Label x:Name="XVelocityStat" Width=" 150"/>
+                <Label x:Name="YVelocityStat" Width=" 150"/>
+                <Label x:Name="SpeedStat" Width=" 150"/>
+                <Label x:Name="XAccelStat" Width=" 150"/>
+                <Label x:Name="YAccelStat" Width=" 150"/>
+                <Label x:Name="XPosStat" Width=" 150"/>
+                <Label x:Name="YPosStat" Width=" 150"/>
+                <Label x:Name="XActual" Width="150"/>
+                <Label x:Name="YActual" Width="150"/>
+                <Label x:Name="PlaneAngle" Width=" 150"/>
+
+            </StackPanel>
+            <Canvas x:Name="Canvas" Background="DeepSkyBlue" Width="800" Height="600" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Label Content="Készítette: Gunics Roland" Canvas.Top="0" Canvas.Left="0"/>
+                <Image x:Name="AirplaneImage" Source="/airplane-toy-icon-free-vector.png" Width="64" Height="50" Canvas.Left="20" Canvas.Top="200" Panel.ZIndex="-10"/>
+                <Canvas x:Name="LineCanvas"/>
+                <Canvas x:Name="ArrowCanvas"/>
+            </Canvas>
+        </StackPanel>
+    </DockPanel>
+</Window>
